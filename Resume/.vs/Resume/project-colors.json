@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "085d8b58-e8f0-4afa-8c78-85d111734b1e": {
+      "ProjectGuid": "085d8b58-e8f0-4afa-8c78-85d111734b1e",
+      "DisplayName": "Resume",
+      "ColorIndex": 0
+    },
+    "f816e136-a960-416b-a809-fd44a3e55e49": {
+      "ProjectGuid": "f816e136-a960-416b-a809-fd44a3e55e49",
+      "DisplayName": "DatabaseAccess",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
