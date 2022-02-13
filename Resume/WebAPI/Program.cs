@@ -1,5 +1,15 @@
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowAllOrigins = "_myAllowAllOrigins";
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowAllOrigins,
+        builder =>
+        {
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        });
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -17,6 +27,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowAllOrigins);
 
 app.UseAuthorization();
 

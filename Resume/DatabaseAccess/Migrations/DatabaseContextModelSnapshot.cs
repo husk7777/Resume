@@ -15,7 +15,7 @@ namespace DatabaseAccess.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
 
             modelBuilder.Entity("DatabaseAccess.Models.Course", b =>
                 {
@@ -124,6 +124,36 @@ namespace DatabaseAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EndUser", (string)null);
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.ErrorLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Controller")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("StackTrace")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ErrorLog", (string)null);
                 });
 
             modelBuilder.Entity("DatabaseAccess.Models.Position", b =>

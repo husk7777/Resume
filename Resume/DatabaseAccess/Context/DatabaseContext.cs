@@ -24,6 +24,7 @@ namespace DatabaseAccess.Context
         {
             modelBuilder.Entity<Course>().ToTable("Course");
             modelBuilder.Entity<EndUser>().ToTable("EndUser");
+            modelBuilder.Entity<ErrorLog>().ToTable("ErrorLog");
             modelBuilder.Entity<Position>().ToTable("Position");
             modelBuilder.Entity<PositionType>().ToTable("PositionType");
             modelBuilder.Entity<Project>().ToTable("Project");
@@ -32,6 +33,7 @@ namespace DatabaseAccess.Context
 
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<EndUser> EndUser { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLog { get; set; }
         public virtual DbSet<Position> Position { get; set; }
         public virtual DbSet<PositionType> PositionType { get; set; }
         public virtual DbSet<Project> Project { get; set; }

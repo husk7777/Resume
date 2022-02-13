@@ -1,0 +1,15 @@
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.csproj.AssemblyReference.cache
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.AssemblyInfoInputs.cache
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.AssemblyInfo.cs
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\bin\Debug\net6.0\Common.deps.json
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\bin\Debug\net6.0\Common.dll
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\bin\Debug\net6.0\ref\Common.dll
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\bin\Debug\net6.0\Common.pdb
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\bin\Debug\net6.0\DatabaseAccess.dll
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\bin\Debug\net6.0\DatabaseAccess.pdb
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.csproj.CopyComplete
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.dll
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\ref\Common.dll
+C:\Users\William\Documents\GitHub\Resume\Resume\Common\obj\Debug\net6.0\Common.pdb
