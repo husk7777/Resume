@@ -1,3 +1,5 @@
+using WebAPI.Logic;
+
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowAllOrigins = "_myAllowAllOrigins";
 
@@ -10,6 +12,14 @@ builder.Services.AddCors(options =>
             builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
         });
 });
+
+/*builder.Services.AddAuthentication(TokenAuthOptions.DefaultSchemeName)
+    .AddScheme<TokenAuthOptions, TokenAuthHandler>(
+    TokenAuthOptions.DefaultSchemeName,
+    options =>
+    {
+        options.TokenHeaderName = "Bearer";
+    });*/
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -31,6 +41,8 @@ app.UseHttpsRedirection();
 app.UseCors(MyAllowAllOrigins);
 
 app.UseAuthorization();
+
+//app.UseAuthentication();
 
 app.MapControllers();
 
