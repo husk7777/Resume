@@ -24,11 +24,15 @@ namespace DatabaseAccess.Context
         {
             modelBuilder.Entity<Course>().ToTable("Course");
             modelBuilder.Entity<EndUser>().ToTable("EndUser");
+            //modelBuilder.Entity<EndUser>().HasOne(e=>e.EndUserDetails).WithOne(e=>e.EndUser).HasPrincipalKey<EndUser>(eu=>eu.Id);
             modelBuilder.Entity<ErrorLog>().ToTable("ErrorLog");
             modelBuilder.Entity<Position>().ToTable("Position");
             modelBuilder.Entity<PositionType>().ToTable("PositionType");
             modelBuilder.Entity<Project>().ToTable("Project");
-            modelBuilder.Entity<Responsibility>().ToTable("Responibility");
+            modelBuilder.Entity<Responsibility>().ToTable("Responsibility");
+            modelBuilder.Entity<UserType>().ToTable("UserType");
+            modelBuilder.Entity<Candidate>().ToTable("Candidate");
+            modelBuilder.Entity<Skill>().ToTable("Skill");
         }
 
         public virtual DbSet<Course> Course { get; set; }
@@ -37,6 +41,7 @@ namespace DatabaseAccess.Context
         public virtual DbSet<Position> Position { get; set; }
         public virtual DbSet<PositionType> PositionType { get; set; }
         public virtual DbSet<Project> Project { get; set; }
-        public virtual DbSet<Responsibility> Responsibility { get; set;}
+        public virtual DbSet<Responsibility> Responsibility { get; set; }
+        public virtual DbSet<Candidate> Candidate { get; set; }
     }
 }

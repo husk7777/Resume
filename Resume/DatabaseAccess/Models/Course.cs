@@ -16,7 +16,10 @@ namespace DatabaseAccess.Models
         public string School { get; set; }
         public string Qualification { get; set; }
         public bool Completed { get; set; }
-        public virtual EndUser EndUser { get; set; }
+
+        [ForeignKey("CandidateId")]
+        public int CandidateId { get; set; }
+        public virtual Candidate Candidate { get; set; }
 
         [Column(TypeName = "datetime2")]
         public DateTime CommencedDate { get; set; }

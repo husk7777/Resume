@@ -14,21 +14,14 @@ namespace DatabaseAccess.Models
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string Citizenship { get; set; }
-        public string CountryOfBirth { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
-        public string Postcode { get; set; }
-        public string Phone { get; set; }
+
+        public virtual Candidate Candidate { get; set; }
+
+        public virtual UserType UserType { get; set; }
 
         private string loginToken;
 
-        public string LoginToken
+        public string? LoginToken
         {
             get
             {
@@ -45,9 +38,9 @@ namespace DatabaseAccess.Models
         }
 
         [Column(TypeName = "datetime2")]
-        public DateTime LoginTokenExpiry { get; set; }
+        public DateTime? LoginTokenExpiry { get; set; }
 
         [Column(TypeName ="datetime2")]
-        public DateTime LastLogin { get; set; }
+        public DateTime? LastLogin { get; set; }
     }
 }

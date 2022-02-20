@@ -13,8 +13,10 @@ namespace DatabaseAccess.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; } 
-        public virtual EndUser EndUser { get; set; }    
+        public string Description { get; set; }
+        [ForeignKey("CandidateId")]
+        public int CandidateId { get; set; }
+        public virtual Candidate Candidate { get; set; }
         public virtual ICollection<ProjectOutcome> ProjectOutcomes { get; set; }    
     }
 }

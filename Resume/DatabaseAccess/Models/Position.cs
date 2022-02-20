@@ -17,11 +17,21 @@ namespace DatabaseAccess.Models
 
         public string Organisation { get; set; }
 
-        public string Description { get; set; }
+
+        [Column(TypeName = "datetime2")]
+        public DateTime StartDate { get; set; }
+
+        [Column(TypeName = "datetime2")]
+        public DateTime? EndDate { get; set; }
 
         public ICollection<Responsibility> Responsibilities { get; set; }
 
-        public virtual EndUser EndUser { get; set; }
+        [ForeignKey("CandidateId")]
+        public int CandidateId { get; set; }
+        public virtual Candidate Candidate { get; set; }
+
+        [ForeignKey("PositionTypeId")]
+        public int PositionTypeId { get; set; }
         public virtual PositionType PositionType { get; set; }
 
     }

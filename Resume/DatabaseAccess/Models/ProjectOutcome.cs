@@ -12,7 +12,7 @@ namespace DatabaseAccess.Models
     public partial class ProjectOutcome
     {
         public int Id { get; set; } 
-        public int Description { get; set; }
-        public virtual Project Project { get; set; }
+        public string Description { get; set; }
+        public int ProjectId { get; set; }
     }
 }

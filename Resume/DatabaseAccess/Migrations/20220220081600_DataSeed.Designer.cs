@@ -11,60 +11,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatabaseAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220213014655_ErrorLog")]
-    partial class ErrorLog
+    [Migration("20220220081600_DataSeed")]
+    partial class DataSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
 
-            modelBuilder.Entity("DatabaseAccess.Models.Course", b =>
+            modelBuilder.Entity("DatabaseAccess.Models.Candidate", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CommencedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Completed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("CompletionDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("EndUserId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Qualification")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("School")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EndUserId");
-
-                    b.ToTable("Course", (string)null);
-                });
-
-            modelBuilder.Entity("DatabaseAccess.Models.EndUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Citizenship")
                         .IsRequired()
@@ -83,31 +41,13 @@ namespace DatabaseAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("LastLogin")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LoginToken")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("LoginTokenExpiry")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -123,7 +63,77 @@ namespace DatabaseAccess.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.HasKey("EndUserId");
+
+                    b.ToTable("Candidate", (string)null);
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CandidateId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CommencedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Completed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("CompletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Qualification")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("School")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CandidateId");
+
+                    b.ToTable("Course", (string)null);
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.EndUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LastLogin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LoginToken")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LoginTokenExpiry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserTypeId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserTypeId");
 
                     b.ToTable("EndUser", (string)null);
                 });
@@ -164,12 +174,11 @@ namespace DatabaseAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("EndUserId")
+                    b.Property<int>("CandidateId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -182,9 +191,12 @@ namespace DatabaseAccess.Migrations
                     b.Property<int>("PositionTypeId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("EndUserId");
+                    b.HasIndex("CandidateId");
 
                     b.HasIndex("PositionTypeId");
 
@@ -212,12 +224,12 @@ namespace DatabaseAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("CandidateId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("EndUserId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -225,7 +237,7 @@ namespace DatabaseAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EndUserId");
+                    b.HasIndex("CandidateId");
 
                     b.ToTable("Project", (string)null);
                 });
@@ -236,8 +248,9 @@ namespace DatabaseAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Description")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("INTEGER");
@@ -270,25 +283,80 @@ namespace DatabaseAccess.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("Responibility", (string)null);
+                    b.ToTable("Responsibility", (string)null);
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.Skill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CandidateId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CandidateId");
+
+                    b.ToTable("Skill", (string)null);
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.UserType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserType", (string)null);
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.Candidate", b =>
+                {
+                    b.HasOne("DatabaseAccess.Models.EndUser", null)
+                        .WithOne("Candidate")
+                        .HasForeignKey("DatabaseAccess.Models.Candidate", "EndUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DatabaseAccess.Models.Course", b =>
                 {
-                    b.HasOne("DatabaseAccess.Models.EndUser", "EndUser")
+                    b.HasOne("DatabaseAccess.Models.Candidate", "Candidate")
                         .WithMany()
-                        .HasForeignKey("EndUserId")
+                        .HasForeignKey("CandidateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("EndUser");
+                    b.Navigation("Candidate");
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.EndUser", b =>
+                {
+                    b.HasOne("DatabaseAccess.Models.UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserType");
                 });
 
             modelBuilder.Entity("DatabaseAccess.Models.Position", b =>
                 {
-                    b.HasOne("DatabaseAccess.Models.EndUser", "EndUser")
-                        .WithMany()
-                        .HasForeignKey("EndUserId")
+                    b.HasOne("DatabaseAccess.Models.Candidate", "Candidate")
+                        .WithMany("Positions")
+                        .HasForeignKey("CandidateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -298,42 +366,60 @@ namespace DatabaseAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("EndUser");
+                    b.Navigation("Candidate");
 
                     b.Navigation("PositionType");
                 });
 
             modelBuilder.Entity("DatabaseAccess.Models.Project", b =>
                 {
-                    b.HasOne("DatabaseAccess.Models.EndUser", "EndUser")
+                    b.HasOne("DatabaseAccess.Models.Candidate", "Candidate")
                         .WithMany()
-                        .HasForeignKey("EndUserId")
+                        .HasForeignKey("CandidateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("EndUser");
+                    b.Navigation("Candidate");
                 });
 
             modelBuilder.Entity("DatabaseAccess.Models.ProjectOutcome", b =>
                 {
-                    b.HasOne("DatabaseAccess.Models.Project", "Project")
+                    b.HasOne("DatabaseAccess.Models.Project", null)
                         .WithMany("ProjectOutcomes")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("DatabaseAccess.Models.Responsibility", b =>
                 {
-                    b.HasOne("DatabaseAccess.Models.Position", "Position")
+                    b.HasOne("DatabaseAccess.Models.Position", null)
                         .WithMany("Responsibilities")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Position");
+            modelBuilder.Entity("DatabaseAccess.Models.Skill", b =>
+                {
+                    b.HasOne("DatabaseAccess.Models.Candidate", null)
+                        .WithMany("Skills")
+                        .HasForeignKey("CandidateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.Candidate", b =>
+                {
+                    b.Navigation("Positions");
+
+                    b.Navigation("Skills");
+                });
+
+            modelBuilder.Entity("DatabaseAccess.Models.EndUser", b =>
+                {
+                    b.Navigation("Candidate")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DatabaseAccess.Models.Position", b =>

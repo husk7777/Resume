@@ -17,6 +17,6 @@ namespace DatabaseAccess.Models
 
         public string Description { get; set; }
 
-        public virtual Position Position { get; set; }
+        public int PositionId { get; set; }
     }
 }
